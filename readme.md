@@ -1,4 +1,3 @@
-```markdown
 # Movie Recommendation Systems 
 
 This repository contains two movie recommendation systems developed using the [MovieLens 100K dataset](https://grouplens.org/datasets/movielens/100k/). It includes both traditional user-based collaborative filtering and a deep learning-based neural collaborative filtering model.
@@ -23,7 +22,6 @@ This repository contains two movie recommendation systems developed using the [M
 Download the [MovieLens 100K dataset](https://grouplens.org/datasets/movielens/100k/) and place the extracted `ml-100k` folder in the project root:
 
 ```
-
 project/
 ├── ml-100k/
 │   ├── u.data
@@ -32,86 +30,76 @@ project/
 │   ├── u.genre
 ├── rs1.py
 ├── rs2.py
-├── run\_eval.py
+├── run_eval.py
 ├── eda.ipynb
 └── README.md
-
-````
+```
 
 ---
 
 ## How to Run
 
+When both models are first run, it takes some time for them to train. After that, they are stored as a pickle model, which can later be used without training.
+
 ### RS1: User-Based Collaborative Filtering
 ```bash
 python rs1.py
-````
-
-* Computes cosine similarity between users
-* Uses top-K nearest neighbors for prediction
-* Prompts user input and returns top 10 movie recommendations
+```
+- Computes cosine similarity between users
+- Uses top-K nearest neighbors for prediction
+- Prompts user input and returns top 10 movie recommendations
 
 ### RS2: Neural Collaborative Filtering (NCF)
-
 ```bash
 python rs2.py
 ```
-
-* Trains a PyTorch model with user/movie embeddings and MLP layers
-* Saves best model based on RMSE
-* Recommends top 10 movies based on learned user preferences
+- Trains a PyTorch model with user/movie embeddings and MLP layers
+- Saves best model based on RMSE
+- Recommends top 10 movies based on learned user preferences
 
 ---
 
 ## Evaluation
 
 Run the following to compare the two systems:
-
 ```bash
 python run_eval.py --num_users 10
 ```
 
 Metrics evaluated:
-
-* **RMSE**: Accuracy of predicted ratings
-* **Novelty**: Encourages recommendations beyond the most popular items
+- **RMSE**: Accuracy of predicted ratings
+- **Novelty**: Encourages recommendations beyond the most popular items
 
 ---
 
 ## Models Used
 
 ### RS1
-
-* Collaborative filtering with cosine similarity
-* Dynamic K-selection for neighbors
+- Collaborative filtering with cosine similarity
+- Dynamic K-selection for neighbors
 
 ### RS2
-
-* Neural network with embedding layers for users and items
-* Hidden layers with dropout, batch normalization, and LeakyReLU
+- Neural network with embedding layers for users and items
+- Hidden layers with dropout, batch normalization, and LeakyReLU
 
 ---
 
-## 📈 EDA
+## EDA
 
 The `eda.ipynb` notebook includes:
-
-* Distribution of ratings
-* User/movie interaction statistics
-* Insights on data sparsity
+- Distribution of ratings
+- User/movie interaction statistics
+- Insights on data sparsity
 
 ---
 
 ## Demo
 
 Once a model is trained, the system interactively asks for a `user_id`:
-
 ```
 Enter User ID to get recommendations:
 ```
-
 And returns:
-
 ```
 Top 10 recommended movies for User X:
 1. Movie A
@@ -121,14 +109,15 @@ Top 10 recommended movies for User X:
 
 ---
 
-Install Required Libraries:
+## Requirements
 
+- Python 3.8+
+- pandas, numpy, matplotlib, scikit-learn
+- torch, torchvision (for RS2)
+
+Install with:
 ```bash
 pip install -r requirements.txt
-```
-
----
-
 ```
 
 ---
